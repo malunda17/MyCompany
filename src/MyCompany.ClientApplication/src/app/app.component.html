@@ -1,0 +1,22 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Insurance Client</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="claims" class="nav-link">My claims</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add" class="nav-link">New claim</a>
+      </li>
+      <section> 
+        <button *ngIf="!isUserAuthenticated" class="btn btn-link"  (click)="login()">Login</button>
+        <button *ngIf="isUserAuthenticated" class="btn btn-link"  (click)="logout()">Logout</button> 
+      </section> 
+    </div>
+  </nav>
+
+
+  <div class="container-fluid mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

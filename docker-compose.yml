@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: my-rabbit
+    ports:
+      - 5672:5672
+      - 15672:15672
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+    environment:
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=Bwalya-2020
+
+  mycompany.claimservice.api:
+    image: ${DOCKER_REGISTRY-}mycompany-claimserviceapi
+    build:
+      context: .
+      dockerfile: src/MyCompany.ClaimService.Api/Dockerfile
+
+  mycompany.logservice.api:
+    image: ${DOCKER_REGISTRY-}mycompany-logserviceapi
+    build:
+      context: .
+      dockerfile: src/MyCompany.LogService.Api/Dockerfile
+
+
+  mycompany.logservice.backgroundtasks:
+    image: ${DOCKER_REGISTRY-}mycompany-logservicebackgroundtasks
+    build:
+      context: .
+      dockerfile: src/MyCompany.LogService.BackgroundTasks/Dockerfile
+
+
+  mycompany.identityservice:
+    image: ${DOCKER_REGISTRY-}mycompany-identityservice
+    build:
+      context: .
+      dockerfile: src/MyCompany.IdentityService/Dockerfile
+
+  mycompany.clientapplication:
+    image: ${DOCKER_REGISTRY-}mycompany-clientapplication
+    build:
+      context: .
+      dockerfile: src/MyCompany.ClientApplication/Dockerfile
+
+
+  mycompany.agentapplication:
+    image: ${DOCKER_REGISTRY-}mycompany-agentapplication
+    build:
+      context: .
+      dockerfile: src/MyCompany.AgentApplication/Dockerfile
+

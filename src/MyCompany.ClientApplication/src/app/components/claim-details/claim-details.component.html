@@ -1,0 +1,91 @@
+<div>
+    <div *ngIf="currentClaim.id" class="edit-form">
+      <h4>Edit Claim</h4>
+      <td  *ngIf ="currentClaim.status == 1"> 
+        <label class="badge badge-primary"> New</label> 
+      </td>  
+      <td  *ngIf ="currentClaim.status == 2"> 
+        <label class="badge badge-info"> Review</label> 
+      </td> 
+      <td  *ngIf ="currentClaim.status == 3"> 
+        <label class="badge badge-warning"> Pending...</label> 
+      </td> 
+      <td  *ngIf ="currentClaim.status == 4"> 
+        <label class="badge badge-success"> Appoved</label> 
+      </td> 
+      <td  *ngIf ="currentClaim.status == 5"> 
+        <label class="badge badge-dark"> Closed</label> 
+      </td> 
+      <form>
+        <!-- <div class="form-group">
+          <label for="title">Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date"
+            [(ngModel)]="currentClaim.date"
+            name="date"
+          />
+        </div>  -->
+        <div class="form-group">
+          <label for="description">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            [(ngModel)]="currentClaim.address"
+            name="address"
+          />
+        </div>
+        <div class="form-group">
+          <label for="damaged_item">Damaged Item</label>
+          <input
+            type="text"
+            class="form-control"
+            id="damaged_item"
+            [(ngModel)]="currentClaim.damaged_item"
+            name="damaged_item"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentClaim.description"
+            name="description"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">incidence</label>
+          <input
+            type="text"
+            class="form-control"
+            id="incidence"
+            [(ngModel)]="currentClaim.incidence"
+            name="incidence"
+          />
+        </div>
+        <button class="badge badge-danger mr-2" (click)="deleteClaim()">
+          Delete
+        </button> 
+    
+        <button
+          type="submit"
+          class="badge badge-success mb-2"
+          (click)="updateClaim()"
+        >
+        Update
+      </button> 
+      </form>
+  
+    </div>
+  
+    <div *ngIf="message">
+      <br />
+      <p>Cannot update this Claim...</p>
+      <p>{{ message }}</p>
+    </div>
+  </div> 
+  

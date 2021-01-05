@@ -1,0 +1,23 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/runtime:5.0-buster-slim AS base
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+WORKDIR /src
+COPY ["src/MyCompany.LogService.BackgroundTasks/MyCompany.LogService.BackgroundTasks.csproj", "src/MyCompany.LogService.BackgroundTasks/"]
+COPY ["src/MyComapany.LogService.Infrastructure/MyComapany.LogService.Infrastructure.csproj", "src/MyComapany.LogService.Infrastructure/"]
+COPY ["src/MyCompany.LogService.Domain/MyCompany.LogService.Domain.csproj", "src/MyCompany.LogService.Domain/"]
+COPY ["src/MyCompany.Common/MyCompany.Common.csproj", "src/MyCompany.Common/"]
+RUN dotnet restore "src/MyCompany.LogService.BackgroundTasks/MyCompany.LogService.BackgroundTasks.csproj"
+COPY . .
+WORKDIR "/src/src/MyCompany.LogService.BackgroundTasks"
+RUN dotnet build "MyCompany.LogService.BackgroundTasks.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "MyCompany.LogService.BackgroundTasks.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "MyCompany.LogService.BackgroundTasks.dll"]

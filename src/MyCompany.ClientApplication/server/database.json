@@ -1,0 +1,74 @@
+{
+  "claims": [
+    {
+      "id": 3,
+      "user_id": 0,
+      "date": "01-01-2020",
+      "damaged_item": "laptop-porta",
+      "description": "description1",
+      "status": 3,
+      "address": "Golf kabulameshi",
+      "incidence": "Tornado"
+    },
+    {
+      "user_id": 0,
+      "status": 4,
+      "date": "2020-12-19T14:36",
+      "address": "adresse yangu",
+      "damaged_item": "Printer-2",
+      "description": "nothing",
+      "incidence": "High theft",
+      "id": 4
+    },
+    {
+      "user_id": 0,
+      "status": 5,
+      "date": "2020-12-18T14:39",
+      "address": "adresse yangu",
+      "damaged_item": "Laptob",
+      "description": "nohting",
+      "incidence": "theft",
+      "id": 5
+    },
+    {
+      "user_id": 0,
+      "status": 1,
+      "date": "2020-12-10T14:57",
+      "address": "adresse",
+      "damaged_item": "damaged item",
+      "description": "description",
+      "incidence": "icend",
+      "id": 6
+    },
+    {
+      "user_id": 0,
+      "status": 1,
+      "date": "2020-12-02T07:32",
+      "address": "Golft Lido",
+      "damaged_item": "CAR",
+      "description": "Nhtin",
+      "incidence": "Tornado",
+      "id": 7
+    },
+    {
+      "user_id": 0,
+      "status": 1,
+      "date": "2020-12-31T06:23:31.829Z",
+      "address": "qsdlfk",
+      "damaged_item": "lsk",
+      "description": "qsldk",
+      "incidence": "qsdflk",
+      "id": 8
+    },
+    {
+      "user_id": 0,
+      "status": 1,
+      "date": "2020-12-13T08:25",
+      "address": "qsdf",
+      "damaged_item": "dsq",
+      "description": "qsdf",
+      "incidence": "qsdf",
+      "id": 9
+    }
+  ]
+}

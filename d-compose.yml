@@ -1,0 +1,22 @@
+version : '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: my-rabbit
+    ports:
+      - 5672:5672
+      - 15672:15672
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+    environment:
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=Bwalya-2020
+
+  logservice-backgroundtask:
+    build: ./src/MyCompany.LogService.BackgroundTasks
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - RABBIT_HOSTNAME=my-rabbit
+    depends_on:
+      - db
+      - rabbitmq

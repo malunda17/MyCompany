@@ -1,0 +1,79 @@
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Damaged Item"
+          [(ngModel)]="keysearch"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchClaims()"
+          > Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+   
+  
+    <div class="col-md-12" >
+     
+      <h4>Claims list </h4>  
+      <table class="table">
+        <thead >
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th> 
+            <th scope="col">Damaged Item</th>
+            <th scope="col">Status</th>
+            <th scope="col">Incidence</th>
+            <th scope="col">Description</th>
+            <th scope="col">Address</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody >  
+            <tr *ngFor="let claim of claims ; let i= index">
+              <th scope="row"> {{ i }}</th>
+              <td> {{ claim.date }}</td> 
+              <td> {{ claim.damaged_item }}</td>  
+              <td  *ngIf ="claim.status == 1"> 
+                <label class="badge badge-primary"> New</label> 
+              </td>  
+              <td  *ngIf ="claim.status == 2"> 
+                <label class="badge badge-info"> Review</label> 
+              </td> 
+              <td  *ngIf ="claim.status == 3"> 
+                <label class="badge badge-warning"> Pending...</label> 
+              </td> 
+              <td  *ngIf ="claim.status == 4"> 
+                <label class="badge badge-success"> Appoved</label> 
+              </td> 
+              <td  *ngIf ="claim.status == 5"> 
+                <label class="badge badge-dark"> Closed</label> 
+              </td> 
+             
+              <td> {{ claim.incidence }}</td>  
+              <td> {{ claim.description }}</td>  
+              <td> {{ claim.address }}</td>  
+              <td><a class="badge badge-primary" routerLink="/claims/{{ claim.id }}">
+                Edit
+              </a> 
+             
+            </td>  
+            </tr>
+      
+          </tbody>
+      </table>
+      
+     
+    </div>
+    
+  </div>
+  
