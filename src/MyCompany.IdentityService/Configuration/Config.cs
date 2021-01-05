@@ -25,16 +25,39 @@ namespace MyCompany.IdentityService.Configuration
             {
                 new Client
                 {
+                    ClientName = "Angular-Client",
+                    ClientId = "angular-client",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RedirectUris = new List<string>{ "http://mycompany.clientapplication:4200/signin-callback",
+                        "http://mycompany.clientapplication:4200/assets/silent-callback.html" },
+                    RequirePkce = true,
+                    AllowAccessTokensViaBrowser = true,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "companyApi"
+                    },
+                    AllowedCorsOrigins = { "http://mycompany.clientapplication:4200" },
+                    RequireClientSecret = false,
+                    PostLogoutRedirectUris = new List<string> { "http://mycompany.clientapplication:4200/signout-callback" },
+                    RequireConsent = false,
+                    AccessTokenLifetime = 600
+ 
+                }
+                ,
+                new Client
+                {
                     ClientId = "mvc",
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = { "https://localhost:5006/signin-oidc"},
-                    PostLogoutRedirectUris = { "https://localhost:5006/signout-callback-oidc" },
-                    //FrontChannelLogoutUri = "https://localhost:5006/signout-oidc",
+                    RedirectUris = { "https://mycompany.agentapplication:5006/signin-oidc"},
+                    PostLogoutRedirectUris = { "https://mycompany.agentapplication:5006/signout-callback-oidc" },
+                    //FrontChannelLogoutUri = "https://mycompany.agentapplication:5006/signout-oidc",
                     ClientSecrets =
                     {
                         new Secret("123456".Sha256())
                     },
-                    AllowedScopes= new List<string> 
+                    AllowedScopes= new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,

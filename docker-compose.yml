@@ -42,9 +42,7 @@ services:
   mycompany.clientapplication:
     image: ${DOCKER_REGISTRY-}mycompany-clientapplication
     build:
-      context: .
-      dockerfile: src/MyCompany.ClientApplication/Dockerfile
-
+       context: ./src/MyCompany.ClientApplication/ 
 
   mycompany.agentapplication:
     image: ${DOCKER_REGISTRY-}mycompany-agentapplication
